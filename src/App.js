@@ -3,27 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
+import HomePage from './components/HomePage'
+
 class FixedNavBar extends Component {
   render() {
-
-    const navBarStyle = {
-      borderBottom: 'thin solid black',
-      backgroundColor: 'white'
-    }
-
     return (
-      /*<nav style={navBarStyle}>
-        <ul>
-          <li><Link to="/">{this.props.rubricName ? this.props.rubricName : String('Inline Grader')}</Link></li>
-        </ul>
-      </nav>*/
-
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">Brand</a>
-            <a className="navbar-brand" href="#">Brand</a>
-            <a className="navbar-brand" href="#">Brand</a>
+            <a className="navbar-brand" href="#">Chess Visualizer</a>
           </div>
         </div>
       </nav>
@@ -32,22 +20,9 @@ class FixedNavBar extends Component {
   }
 }
 
-class HomePage extends Component {
-  render() {
-    return (
-      <div className='container'>
-        <h1>test</h1>
-      </div>
-    );
-  }
-}
-
 
 class App extends Component {
   render() {
-    // let style = {
-    //   margin
-    // };
     return (
       <div className="App">
         <header>
