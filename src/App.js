@@ -45,15 +45,20 @@ class HomePage extends Component {
 
 class App extends Component {
   render() {
+    // let style = {
+    //   margin
+    // };
     return (
       <div className="App">
         <header>
           <FixedNavBar />
         </header>
 
-        <main>
-          <HomePage />
-        </main>
+        
+          <main>
+            <HomePage />
+          </main>
+
 
       </div>
     );
