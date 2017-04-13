@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import _ from 'lodash';
 
+import {Openings} from './Visualizations'
+
+
 class Header extends Component {
   render() {
     return (
@@ -53,30 +56,16 @@ let Spinner = (props) => {
   }
 };
 
-
-/*class Spinner extends Component {
-  render() {
-    let style = {
-      color: 'red'
-    }
-
-    return (
-      <div id="spinner">
-        <i className="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i>
-      </div>
-    );
-  }
-}*/
-
 export default class HomePage extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
       username: 'jnaranj0',
-      page: 69,
+      page: 5,
       games: [],
       loading: false,
+      loaded: false
     }
   }
 
@@ -86,7 +75,7 @@ export default class HomePage extends Component {
 
   getNextPage = () => {
     if (this.state.page != null) {
-      let url = `https://en.lichess.org/api/user/${this.state.username}/games?with_opening=1&page=${this.state.page}`;
+      let url = `https://en.lichess.org/api/user/${this.state.username}/games?with_opening=1&nb=100&page=${this.state.page}`;
       let outerThis = this;
       
       fetch(url)
@@ -102,7 +91,10 @@ export default class HomePage extends Component {
     } else {
       console.log('Finished paging through data!');
       // Disable loading spinner
-      this.setState({loading: false});
+      this.setState({
+        loading: false,
+        loaded: true
+      });
     }
 
   }
@@ -123,6 +115,8 @@ export default class HomePage extends Component {
         <p>Games: {this.state.games.length}</p>
         <Spinner loading={this.state.loading}/>
         <UsernameForm onUsernameChanged={this.onUsernameChanged} onSubmit={this.onSubmit} />
+
+        <Openings loaded={this.state.loaded} games={this.state.games} username={this.state.username}/>
       </div>
     );
   }
