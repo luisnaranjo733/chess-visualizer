@@ -62,7 +62,7 @@ export default class HomePage extends Component {
 
     this.state = {
       username: 'jnaranj0',
-      page: 5,
+      page: 1,
       games: [],
       loading: false,
       loaded: false

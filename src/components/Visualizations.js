@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Moment from 'moment';
 
 let Game = (props) => {
     let game = props.game;
@@ -20,6 +20,9 @@ export class Openings extends Component {
                 let status = game.status;
                 let elo = '';
 
+                let lastMoveAt = Moment(game.lastMoveAt);
+                let date = lastMoveAt.format("M/D/YYYY");
+
                 if (game.players.black.userId === this.props.username) {
                     elo = game.players.black.rating;
                 } else if (game.players.white.userId === this.props.username) {
@@ -27,9 +30,9 @@ export class Openings extends Component {
                 }
 
                 if (color === winner) {
-                    return <li key={index}>{`Win (${elo}): ${game.opening.name}`}</li>;
+                    return <li key={index}>{`Win (${elo}): ${game.opening.name} - ${date}`}</li>;
                 } else {
-                    return <li key={index}>{`Loss (${elo}): ${game.opening.name}`}</li>;
+                    return <li key={index}>{`Loss (${elo}): ${game.opening.name} - ${date}`}</li>;
                 };
             });
 
